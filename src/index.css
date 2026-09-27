@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Cores extraídas da imagem enviada */
+  --color-lavender: #9681d9;
+  --color-purple-dark: #463181;
+  --color-navy: #082674;
+  --color-blue: #3365ca;
+  --color-teal-light: #2c7b91;
+  --color-teal-dark: #0f4456;
+
+  /* Aplicação no Sistema */
+  --bg-main: #060c1a;
+  --bg-card: rgba(15, 68, 86, 0.25);
+  --bg-input: #082674;
+  --border-color: rgba(150, 129, 217, 0.25);
+  --text-primary: #e6e8ff;
+  --text-secondary: #9681d9;
+  --accent-action: #3365ca;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-main);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(70, 49, 129, 0.3) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(44, 123, 145, 0.25) 0%, transparent 40%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .font-title {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.5px;
+}
+
+input, select, button {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
