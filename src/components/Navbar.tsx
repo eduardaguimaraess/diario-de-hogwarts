@@ -31,31 +31,21 @@ export function Navbar() {
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
         <div style={{
-          backgroundColor: 'rgba(8, 38, 116, 0.4)',
-          border: '1px solid var(--border-color)',
-          padding: '0.35rem',
-          borderRadius: '8px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          width: '4.1rem',
+          height: '4.1rem'
         }}>
-          {/* Brasão Colorido de Hogwarts Renderizado Diretamente em SVG (100% à prova de falhas) */}
-          <svg width="32" height="36" viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 5 L90 20 V60 C90 85 50 105 50 105 C50 105 10 85 10 60 V20 Z" fill="#131129" stroke="#d4af37" strokeWidth="3"/>
-            {/* Grifinória (Quadrante Superior Esquerdo - Vermelho) */}
-            <path d="M50 12 L48 53 H15 V22 Z" fill="#740001" />
-            {/* Sonserina (Quadrante Superior Direito - Verde) */}
-            <path d="M50 12 L52 53 H85 V22 Z" fill="#1A472A" />
-            {/* Lufa-Lufa (Quadrante Inferior Esquerdo - Amarelo/Dourado) */}
-            <path d="M15 57 H48 L50 97 C35 90 20 78 15 65 Z" fill="#ECB939" />
-            {/* Corvinal (Quadrante Inferior Direito - Azul) */}
-            <path d="M85 57 H52 L50 97 C65 90 80 78 85 65 Z" fill="#0E1A40" />
-            {/* Linhas Divisórias em Dourado */}
-            <line x1="50" y1="12" x2="50" y2="97" stroke="#d4af37" strokeWidth="2" />
-            <line x1="15" y1="55" x2="85" y2="55" stroke="#d4af37" strokeWidth="2" />
-            {/* Letra H de Hogwarts ao Centro */}
-            <text x="50" y="62" fontStyle="serif" fontWeight="bold" fontSize="24" fill="#ffffff" textAnchor="middle" fontFamily="Cinzel, Georgia, serif">H</text>
-          </svg>
+          <img 
+            src="https://www.freepnglogos.com/uploads/hogwarts-logo-png/hogwarts-logo-shadopro-deviantart-0.png" 
+            alt="Brasão de Hogwarts" 
+            style={{ 
+              width: '100%', 
+              height: '100%', 
+              objectFit: 'contain' 
+            }} 
+          />
         </div>
         <div>
           <h2 style={{ margin: 0, color: '#fff', fontSize: '1.2rem' }}>Diário de Hogwarts</h2>

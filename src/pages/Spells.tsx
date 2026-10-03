@@ -82,7 +82,7 @@ export function Spells() {
             <BookOpen color="var(--color-lavender)" size={24} /> Grimório de Feitiços
           </h1>
           <p style={{ color: 'var(--color-lavender)', fontSize: '0.9rem', marginTop: '0.25rem' }}>
-            Registros recuperados da base oficial ({filteredSpells.length} feitiços exibidos)
+            Total de feitiços cadastrados pelos bruxos ({filteredSpells.length} feitiços exibidos)
           </p>
         </div>
 
