@@ -48,3 +48,18 @@ export interface NewsItem {
   date: string;
   summary: string;
 }
+
+export interface CustomSpell {
+  id: string;
+  name: string;
+  category: string;
+  effect: string;
+}
+
+export interface CustomPotion {
+  id: string;
+  name: string;
+  difficulty: string;
+  effect: string;
+  ingredients: string;
+}

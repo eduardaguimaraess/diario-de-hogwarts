@@ -112,7 +112,7 @@ export function Home() {
 
             <div style={{ backgroundColor: '#0b162c', border: '1px solid var(--border-color)', padding: '1.25rem', borderRadius: '12px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
-                <span style={{ fontSize: '0.8rem', color: 'var(--color-teal-light)', fontWeight: 600 }}>EQUIPAMENTO PRINCIPAL</span>
+                <span style={{ fontSize: '0.8rem', color: 'var(--color-teal-light)', fontWeight: 600 }}>ESPECIFICAÇÃO DA VARINHA</span>
                 <Wand2 size={18} color="var(--color-lavender)" />
               </div>
               <p style={{ fontSize: '1rem', fontWeight: '600', color: '#fff', margin: 0 }}>{user.wand}</p>
@@ -124,11 +124,8 @@ export function Home() {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.75rem' }}>
               <div>
                 <h3 style={{ color: '#fff', fontSize: '1.2rem', margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Trophy color="#FFD700" size={22} /> Taça das Casas de Hogwarts
+                  <Trophy color="#FFD700" size={22} /> Taça das Casas
                 </h3>
-                <p style={{ color: 'var(--color-lavender)', fontSize: '0.8rem', margin: '0.2rem 0 0 0' }}>
-                  Placar dinâmico de virtudes e pontos acadêmicos
-                </p>
               </div>
 
               <div style={{ backgroundColor: 'rgba(255, 215, 0, 0.1)', border: '1px solid #FFD700', padding: '0.3rem 0.8rem', borderRadius: '20px', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>

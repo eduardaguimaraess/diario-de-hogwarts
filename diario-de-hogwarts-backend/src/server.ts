@@ -1,6 +1,8 @@
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import { scheduleRoutes } from './routes/scheduleRoutes';
+import { spellsRoutes } from './routes/spellsRoutes.js';
+import { potionsRoutes } from './routes/potionsRoutes.js';
 
 // Inicializa o Fastify habilitando o logger
 const server = Fastify({
@@ -23,6 +25,8 @@ async function main() {
 
   // Registra as rotas da nossa entidade principal
   await server.register(scheduleRoutes);
+  await server.register(spellsRoutes);
+  await server.register(potionsRoutes);
 
   // Inicia o servidor na porta 3333
   try {

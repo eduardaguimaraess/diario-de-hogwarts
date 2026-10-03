@@ -116,7 +116,7 @@ export function Navbar() {
             fontWeight: 500
           }}
         >
-          <BookmarkCheck size={16} /> Meus Favoritos
+          <BookmarkCheck size={16} /> Feitiços favoritos
         </Link>
         <Link 
           to="/schedule" 
