@@ -182,7 +182,7 @@ export function Schedule() {
               gap: '0.5rem'
             }}
           >
-            <Plus size={16} /> Cadastrar Nova Aula (API)
+            <Plus size={16} /> Cadastrar Nova Aula
           </button>
         )}
       </div>

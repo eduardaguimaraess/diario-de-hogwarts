@@ -6,12 +6,14 @@ import { Spells } from './pages/Spells';
 import { SpellDetail } from './pages/SpellDetail';
 import { Favorites } from './pages/Favorites';
 import { Schedule } from './pages/Schedule';
+import { SchedulePaginated } from './pages/SchedulePaginated';
 import { Potions } from './pages/Potions';
 
 export function App() {
   return (
     <BrowserRouter>
       <Navbar />
+
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
@@ -19,6 +21,7 @@ export function App() {
         <Route path="/spells/:id" element={<SpellDetail />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/schedule" element={<Schedule />} />
+        <Route path="/schedule/search" element={<SchedulePaginated />} />
         <Route path="/potions" element={<Potions />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

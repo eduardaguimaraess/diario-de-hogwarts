@@ -1,99 +1,34 @@
-import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
-import { initialSchedule, ScheduleClass } from '../data/scheduleData.js';
-
-// Copiamos os dados iniciais para uma variável mutável em memória
-let schedule: ScheduleClass[] = [...initialSchedule];
-
-// Tipos para os parâmetros e corpo das requisições (TypeScript)
-interface Params {
-  id: string;
-}
-
-interface ScheduleBody {
-  subject: string;
-  professor: string;
-  classroom: string;
-  time: string;
-  dayOfWeek: string;
-}
+import type { FastifyInstance } from 'fastify';
+import * as scheduleController from '../modules/schedule/scheduleController.js';
+import {
+  createScheduleSchema,
+  paginationSchema,
+  updateScheduleSchema
+} from '../modules/schedule/scheduleSchemas.js';
 
 export async function scheduleRoutes(fastify: FastifyInstance) {
-  
-  // 1. GET /schedule — Listar todas as aulas
-  fastify.get('/schedule', async (_request: FastifyRequest, reply: FastifyReply) => {
-    return reply.status(200).send(schedule);
-  });
+  fastify.get('/schedule', scheduleController.list);
 
-  // 2. GET /schedule/:id — Buscar aula específica pelo ID
-  fastify.get('/schedule/:id', async (request: FastifyRequest<{ Params: Params }>, reply: FastifyReply) => {
-    const { id } = request.params;
-    const item = schedule.find((s) => s.id === id);
+  // Deve ficar antes de /schedule/:id para "paginated" não ser tratado como ID.
+  fastify.get(
+    '/schedule/paginated',
+    { schema: paginationSchema },
+    scheduleController.listPaginated
+  );
 
-    if (!item) {
-      return reply.status(404).send({ error: 'Aula não encontrada na grade curricular de Hogwarts.' });
-    }
+  fastify.get('/schedule/:id', scheduleController.getById);
 
-    return reply.status(200).send(item);
-  });
+  fastify.post(
+    '/schedule',
+    { schema: createScheduleSchema },
+    scheduleController.create
+  );
 
-  // 3. POST /schedule — Cadastrar nova aula
-  fastify.post('/schedule', async (request: FastifyRequest<{ Body: ScheduleBody }>, reply: FastifyReply) => {
-    const { subject, professor, classroom, time, dayOfWeek } = request.body;
+  fastify.put(
+    '/schedule/:id',
+    { schema: updateScheduleSchema },
+    scheduleController.update
+  );
 
-    // Validação básica de campos obrigatórios
-    if (!subject || !professor || !classroom || !time || !dayOfWeek) {
-      return reply.status(400).send({ error: 'Todos os campos (materia, professor, sala, horario e dia) são obrigatórios.' });
-    }
-
-    const newClass: ScheduleClass = {
-      id: Date.now().toString(), // Gera um ID único em string com base no timestamp
-      subject,
-      professor,
-      classroom,
-      time,
-      dayOfWeek
-    };
-
-    schedule.push(newClass);
-
-    return reply.status(201).send(newClass);
-  });
-
-  // 4. PUT /schedule/:id — Atualizar aula existente
-  fastify.put('/schedule/:id', async (request: FastifyRequest<{ Params: Params; Body: ScheduleBody }>, reply: FastifyReply) => {
-    const { id } = request.params;
-    const { subject, professor, classroom, time, dayOfWeek } = request.body;
-
-    const index = schedule.findIndex((s) => s.id === id);
-
-    if (index === -1) {
-      return reply.status(404).send({ error: 'Aula não encontrada para atualização.' });
-    }
-
-    // Atualiza os dados mantendo o mesmo ID
-    schedule[index] = {
-      id,
-      subject: subject || schedule[index].subject,
-      professor: professor || schedule[index].professor,
-      classroom: classroom || schedule[index].classroom,
-      time: time || schedule[index].time,
-      dayOfWeek: dayOfWeek || schedule[index].dayOfWeek
-    };
-
-    return reply.status(200).send(schedule[index]);
-  });
-
-  // 5. DELETE /schedule/:id — Remover aula
-  fastify.delete('/schedule/:id', async (request: FastifyRequest<{ Params: Params }>, reply: FastifyReply) => {
-    const { id } = request.params;
-    const index = schedule.findIndex((s) => s.id === id);
-
-    if (index === -1) {
-      return reply.status(404).send({ error: 'Aula não encontrada para remoção.' });
-    }
-
-    schedule.splice(index, 1);
-
-    return reply.status(204).send(); // 204 No Content para remoções bem-sucedidas
-  });
+  fastify.delete('/schedule/:id', scheduleController.remove);
 }
